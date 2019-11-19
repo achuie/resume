@@ -9,6 +9,9 @@
 \usepackage{tabularx}
 \usepackage[parfill]{parskip}
 
+% No page numbers.
+\pagestyle{empty}
+
 \newenvironment{aSection}[1]{
     \medskip \textbf{\uppercase{#1}}
     \smallskip
@@ -39,7 +42,10 @@
 
         \vspace{0.25em}
 
-        (847)\,$\cdot$\,373\,$\cdot$\,4588~$\diamond$ andrew.huie@alumni.rice.edu
+        \raisebox{.3ex}{\footnotesize+}81 (70)\,$\cdot$\,4387\,$\cdot$\,8863~$\diamond$
+        \href{mailto:andrew.huie@alumni.rice.edu}{\textcolor{blue}{
+            andrew.huie\textbf{[at]}alumni.rice.edu
+        }}
 
     \end{center}
 }
@@ -68,22 +74,38 @@ Science; Computer Security; Computer Networks
 
 \begin{aSection}{Technical Proficiency}
     \begin{tabularx}{\textwidth}{@{}>{\bfseries}l X@{}}
-        Computer Languages \\ \quad Proficient & \textbf{Java}, \textbf{Python},
-        C\hspace{-.05em}\raisebox{.4ex}{\tiny +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny
-        +}\\
-        \quad Familiar & Bash, Javascript/HTML/CSS, MySQL\\
-        Development Tools & Linux, Git, Vim, IntelliJ
+    Computer Languages \\ \quad Proficient & \textbf{Rust, C\hspace{-.05em}\raisebox{.4ex}{\tiny
+    +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny +}}, Python, Java\\
+        \quad Familiar & Bash, Javascript/HTML/CSS\\
+        Development Tools & Linux, Git, CMake, IntelliJ, Nix Package Manager, Visual Studio
     \end{tabularx}
 \end{aSection}
 
 \begin{aSection}{Experience}
     \begin{aSubsection}
+        {\textbf{Ascent Robotics, Inc.} --- Autonomous vehicle technology development}
+        {Sept 2017 -- Present}
+        {Senior Software Engineer}
+        {Shibuya, Tokyo, JP}
+    \item Simulation
+        \begin{list}{\raisebox{.4ex}{\tiny$\rightharpoonup$}}{\leftmargin=2em}
+            \itemsep -0.5em \vspace{-0.5em}
+            \item Lanelet2 map generator for in-house road network format, designed to facilitate
+                searching for difficult scenarios
+            \item Emulation of perception stack output for agent training in sim environment
+            \item Lightweight collision sim for MCTS playout/rollout during simulation step
+            \item High fidelity driving sim using Unreal Engine 4
+        \end{list}
+    \end{aSubsection}
+
+    \begin{aSubsection}
         {\textbf{Dr. Robert Cartwright, Rice University} --- Object-oriented program development}
-        {May --- Sept 2016}
+        {May -- Sept 2016}
         {Research Assistant}
         {Houston, TX, USA}
-    \item Created a new release of \href{http://www.drjava.org}{\textcolor{blue}{DrJava}}, a
-        pedagogic integrated development environment (IDE)
+    \item Created a new release of
+        \href{http://www.drjava.org}{\textcolor{blue}{\underline{DrJava}}}, a pedagogic integrated
+        development environment (IDE)
     \item Adapted the JaCoCo Java code coverage library for integrated use in DrJava
     \item Debugged JUnit integration, Find/Replace, other UI features
     \item Updated documentation with DocBook
@@ -91,7 +113,7 @@ Science; Computer Security; Computer Networks
 
     \begin{aSubsection}
         {\textbf{Dr. Dan Wallach, Rice University} --- Java TCP/IP penetration testing}
-        {May --- Aug 2015}
+        {May -- Aug 2015}
         {Research Assistant}
         {Houston, TX, USA}
     \item Inspected the security of TCP connections in Java 8, regarding the HotSpot JVM heap
@@ -101,9 +123,9 @@ Science; Computer Security; Computer Networks
     \end{aSubsection}
 
     \begin{aSubsection}
-        {\textbf{LumaDyne Aerospace \& Scientific, LLC} --- Custom scientific
+        {\textbf{LumaDyne Aerospace \& Scientific, LLC} --- Purpose-built scientific
         instruments}
-        {Feb --- Aug 2014}
+        {Feb -- Aug 2014}
         {Electrical Engineering Intern}
         {Houston, TX, USA}
     \item Designed and fabricated application-specific printed circuit boards
@@ -117,7 +139,7 @@ Science; Computer Security; Computer Networks
 
     \begin{aSubsection}
         {\textbf{Salient Partners, L.P.} --- Financial assets management firm}
-        {May --- Aug 2013}
+        {May -- Aug 2013}
         {IT Intern}
         {Houston, TX, USA}
     \item Diagnosed and resolved a range of software, hardware, and network issues
@@ -128,7 +150,7 @@ Science; Computer Security; Computer Networks
 \begin{aSection}{Projects}
     \begin{aSubsection}
         {\textbf{Cutthroat}}
-        {\textcolor{blue}{\url{www.github.com/achooie/cutthroat}}}
+        {\textcolor{blue}{\underline{\url{www.github.com/achooie/cutthroat}}}}
         {Java}{}
     \item[] Networked multiplayer, top-down, ASCII-art shooter video game in which players mine for
         ammo and weapon upgrades, and win by reaching a number of kills.
@@ -136,10 +158,13 @@ Science; Computer Security; Computer Networks
 
     \begin{aSubsection}
         {\textbf{Custom Keyboard}}
-        {\textcolor{blue}{\url{www.github.com/achooie/dotfiles/tree/master/planck-keymap}}}
+        {\textcolor{blue}{\underline{
+            \url{www.github.com/achooie/dotfiles/tree/master/planck-keymap}
+        }}}
         {C}{}
-    \item[] Programmed with \href{www.github.com/achooie/qmk_firmware}{\textcolor{blue}{QMK}},
-        featuring multi-function tap/hold keys and RGB LED modes for ease of programming.
+    \item[] Programmed with
+        \href{www.github.com/achooie/qmk_firmware}{\textcolor{blue}{\underline{QMK}}}, featuring
+        multi-function tap/hold keys and RGB LED modes for ease of programming.
     \end{aSubsection}
 \end{aSection}
 
