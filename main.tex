@@ -7,6 +7,7 @@
 \usepackage{titling}
 \usepackage{bold-extra}
 \usepackage{tabularx}
+\usepackage{changepage}
 \usepackage[parfill]{parskip}
 
 % No page numbers.
@@ -44,7 +45,7 @@
 
         \raisebox{.3ex}{\footnotesize+}81 (70)\,$\cdot$\,4387\,$\cdot$\,8863~$\diamond$
         \href{mailto:andrew.huie@alumni.rice.edu}{\textcolor{blue}{
-            andrew.huie\textbf{[at]}alumni.rice.edu
+            andrew.huie@alumni.rice.edu
         }}
 
     \end{center}
@@ -87,15 +88,26 @@ Science; Computer Security; Computer Networks
         {Sept 2017 -- Present}
         {Senior Software Engineer}
         {Shibuya, Tokyo, JP}
-    \item Simulation
-        \begin{list}{\raisebox{.4ex}{\tiny$\rightharpoonup$}}{\leftmargin=2em}
+    \item Simulation suite development
+        \begin{list}{\raisebox{.4ex}{\tiny$\succ$}}{\leftmargin=2em}
             \itemsep -0.5em \vspace{-0.5em}
             \item Lanelet2 map generator for in-house road network format, designed to facilitate
                 searching for difficult scenarios
             \item Emulation of perception stack output for agent training in sim environment
             \item Lightweight collision sim for MCTS playout/rollout during simulation step
-            \item High fidelity driving sim using Unreal Engine 4
+            \item High fidelity driving sim using Unreal Engine 4 with output similar to car
+                platform
         \end{list}
+    \item Simulation environment exposing handles for domain randomization of objects, background,
+        object position, lighting, and perspective for training data generation in
+        \href{https://arxiv.org/abs/1805.11778}{\textcolor{blue}{\underline{publication}}}:
+        \begin{adjustwidth}{1em}{}
+            \vspace{-0.5em}
+            Object Detection using Domain Randomization and Generative Adversarial Refinement
+            of Synthetic Images \textit{ArXiv} \textbf{2018}\\
+            Fernando Camaro Nogues, \textbf{Andrew Huie}, Sakyasingha Dasgupta
+
+        \end{adjustwidth}
     \end{aSubsection}
 
     \begin{aSubsection}
@@ -150,7 +162,7 @@ Science; Computer Security; Computer Networks
 \begin{aSection}{Projects}
     \begin{aSubsection}
         {\textbf{Cutthroat}}
-        {\textcolor{blue}{\underline{\url{www.github.com/achooie/cutthroat}}}}
+        {\textcolor{blue}{\underline{\url{https://www.github.com/achooie/cutthroat}}}}
         {Java}{}
     \item[] Networked multiplayer, top-down, ASCII-art shooter video game in which players mine for
         ammo and weapon upgrades, and win by reaching a number of kills.
@@ -159,11 +171,11 @@ Science; Computer Security; Computer Networks
     \begin{aSubsection}
         {\textbf{Custom Keyboard}}
         {\textcolor{blue}{\underline{
-            \url{www.github.com/achooie/dotfiles/tree/master/planck-keymap}
+            \url{https://www.github.com/achooie/dotfiles/tree/master/planck-keymap}
         }}}
         {C}{}
     \item[] Programmed with
-        \href{www.github.com/achooie/qmk_firmware}{\textcolor{blue}{\underline{QMK}}}, featuring
+        \href{https://github.com/qmk/qmk_firmware}{\textcolor{blue}{\underline{QMK}}}, featuring
         multi-function tap/hold keys and RGB LED modes for ease of programming.
     \end{aSubsection}
 \end{aSection}
