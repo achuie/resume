@@ -37,6 +37,16 @@
     \vspace{0.5em}
 }
 
+\newenvironment{pSubsection}[2]{
+    {#1} \hfill {#2}
+    \smallskip
+    \begin{list}{$\cdot$}{\leftmargin=1em}
+    \itemsep -0.5em \vspace{-0.5em}
+    }{
+    \end{list}
+    \vspace{0.5em}
+}
+
 
 \renewcommand{\maketitle}{
     \begin{center}
@@ -100,6 +110,7 @@ Science; Computer Security; Computer Networks
             \item High fidelity driving sim using Unreal Engine 4 with output similar to car
                 platform
         \end{list}
+    \item Conducted screening interviews for hiring candidates
     \item Created simulation environment for robot arm pick/place project, exposing handles for
         domain randomization of objects, background, object position, lighting, and perspective for
         training data generation in
@@ -110,7 +121,6 @@ Science; Computer Security; Computer Networks
             of Synthetic Images \textit{ArXiv} \textbf{2018}\\
             \hspace*{1em} Fernando Camaro Nogues, \textbf{Andrew Huie}, Sakyasingha Dasgupta
         \end{adjustwidth}
-    \item Conducted screening interviews for hiring candidates
     \end{aSubsection}
 
     \begin{aSubsection}
@@ -163,24 +173,22 @@ Science; Computer Security; Computer Networks
 \end{aSection}
 
 \begin{aSection}{Projects}
-    \begin{aSubsection}
+    \begin{pSubsection}
         {\textbf{Cutthroat}}
         {\textcolor{blue}{\underline{\url{https://www.github.com/achooie/cutthroat}}}}
-        {Java}{}
-    \item[] Networked multiplayer, top-down, ASCII-art shooter video game in which players mine for
-        ammo and weapon upgrades, and win by reaching a number of kills.
-    \end{aSubsection}
+    \item[] Networked multiplayer, top-down, ASCII-art shooter video game written in Java in which
+        players mine for ammo and weapon upgrades, and win by reaching a number of kills.
+    \end{pSubsection}
 
-    \begin{aSubsection}
+    \begin{pSubsection}
         {\textbf{Custom Keyboard}}
         {\textcolor{blue}{\underline{
             \url{https://www.github.com/achooie/dotfiles/tree/master/planck-keymap}
         }}}
-        {C}{}
-    \item[] Programmed with
+    \item[] Programmed in C with
         \href{https://github.com/qmk/qmk_firmware}{\textcolor{blue}{\underline{QMK}}}, featuring
         multi-function tap/hold keys and RGB LED modes for ease of programming.
-    \end{aSubsection}
+    \end{pSubsection}
 \end{aSection}
 
 \end{document}
