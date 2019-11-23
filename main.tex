@@ -8,6 +8,7 @@
 \usepackage{bold-extra}
 \usepackage{tabularx}
 \usepackage{changepage}
+\usepackage{CJKutf8}
 \usepackage[parfill]{parskip}
 
 % No page numbers.
@@ -84,11 +85,12 @@ Science; Computer Security; Computer Networks
 
 \begin{aSection}{Experience}
     \begin{aSubsection}
-        {\textbf{Ascent Robotics, Inc.} --- Autonomous vehicle technology development}
+        {\textbf{Ascent Robotics \begin{CJK}{UTF8}{min}株式会社 \end{CJK}} --- Autonomous robotics
+            technology development}
         {Sept 2017 -- Present}
         {Senior Software Engineer}
         {Shibuya, Tokyo, JP}
-    \item Simulation suite development
+    \item Worked on autonomous vehicle simulation suite development
         \begin{list}{\raisebox{.4ex}{\tiny$\succ$}}{\leftmargin=2em}
             \itemsep -0.5em \vspace{-0.5em}
             \item Lanelet2 map generator for in-house road network format, designed to facilitate
@@ -98,16 +100,17 @@ Science; Computer Security; Computer Networks
             \item High fidelity driving sim using Unreal Engine 4 with output similar to car
                 platform
         \end{list}
-    \item Simulation environment exposing handles for domain randomization of objects, background,
-        object position, lighting, and perspective for training data generation in
+    \item Created simulation environment for robot arm pick/place project, exposing handles for
+        domain randomization of objects, background, object position, lighting, and perspective for
+        training data generation in
         \href{https://arxiv.org/abs/1805.11778}{\textcolor{blue}{\underline{publication}}}:
         \begin{adjustwidth}{1em}{}
             \vspace{-0.5em}
             Object Detection using Domain Randomization and Generative Adversarial Refinement
             of Synthetic Images \textit{ArXiv} \textbf{2018}\\
-            Fernando Camaro Nogues, \textbf{Andrew Huie}, Sakyasingha Dasgupta
-
+            \hspace*{1em} Fernando Camaro Nogues, \textbf{Andrew Huie}, Sakyasingha Dasgupta
         \end{adjustwidth}
+    \item Conducted screening interviews for hiring candidates
     \end{aSubsection}
 
     \begin{aSubsection}
