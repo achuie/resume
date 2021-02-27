@@ -1,8 +1,13 @@
-all:
-	pdflatex main.tex
+all: resume cletter
 
-mostlyclean:
-	rm -f main.aux main.log main.out
+resume:
+	pdflatex -jobname andrew_huie resume.tex
 
-clean: mostlyclean
-	rm -f main.pdf
+cletter:
+	pdflatex cletter.tex
+
+clean:
+	rm -f *.aux *.log *.out
+
+veryclean: clean
+	rm -f *.pdf

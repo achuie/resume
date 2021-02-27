@@ -1,0 +1,85 @@
+\documentclass[10pt, a4paper]{article}
+
+\usepackage[left=0.75in,right=0.75in,top=0.5in,bottom=0.6in]{geometry}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{bold-extra}
+\usepackage{tabularx}
+\usepackage{changepage}
+\usepackage{CJKutf8}
+\usepackage[parfill]{parskip}
+
+% No page numbers.
+\pagestyle{empty}
+
+\newenvironment{aSection}[1]{
+    \medskip \textbf{\uppercase{#1}}
+    \smallskip
+    \hrule
+    \begin{list}{}{
+            \setlength{\leftmargin}{1.5em}
+        }
+    \item[]
+    }{
+    \end{list}
+}
+
+\newenvironment{aSubsection}[4]{
+    {#1} \hfill {#2} \\
+    \textit{#3} \hfill \textit{#4}
+    \smallskip
+    \begin{list}{$\cdot$}{\leftmargin=1em}
+    \itemsep -0.5em \vspace{-0.5em}
+    }{
+    \end{list}
+    \vspace{0.5em}
+}
+
+\newenvironment{pSubsection}[2]{
+    {#1} \hfill {#2}
+    \smallskip
+    \begin{list}{$\cdot$}{\leftmargin=1em}
+    \itemsep -0.5em \vspace{-0.5em}
+    }{
+    \end{list}
+    \vspace{0.5em}
+}
+
+
+\renewcommand{\maketitle}{
+    \begin{center}
+        {\Huge\theauthor}
+
+        \vspace{0.25em}
+
+        \raisebox{.3ex}{\footnotesize+}81 (70)\,$\cdot$\,4387\,$\cdot$\,8863~$\diamond$
+        \href{mailto:andrew.huie@alumni.rice.edu}{\textcolor{blue}{
+            andrew.huie@alumni.rice.edu
+        }}
+
+    \end{center}
+}
+
+
+\begin{document}
+
+\title{Cover Letter}
+\author{\textsc{Andrew C. Huie}}
+
+\maketitle
+
+\vspace{1em}
+
+\begin{flushright}
+    \color{Gray}
+    \textbf{Andrew Huie}\\
+    \textit{
+        3-11, 3 Ch$\bar{o}$me, Minato, \#1102\\
+        Chuo-ku, Tokyo-to\\
+        Japan
+    }
+\end{flushright}
+
+\end{document}
