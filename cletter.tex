@@ -14,40 +14,6 @@
 % No page numbers.
 \pagestyle{empty}
 
-\newenvironment{aSection}[1]{
-    \medskip \textbf{\uppercase{#1}}
-    \smallskip
-    \hrule
-    \begin{list}{}{
-            \setlength{\leftmargin}{1.5em}
-        }
-    \item[]
-    }{
-    \end{list}
-}
-
-\newenvironment{aSubsection}[4]{
-    {#1} \hfill {#2} \\
-    \textit{#3} \hfill \textit{#4}
-    \smallskip
-    \begin{list}{$\cdot$}{\leftmargin=1em}
-    \itemsep -0.5em \vspace{-0.5em}
-    }{
-    \end{list}
-    \vspace{0.5em}
-}
-
-\newenvironment{pSubsection}[2]{
-    {#1} \hfill {#2}
-    \smallskip
-    \begin{list}{$\cdot$}{\leftmargin=1em}
-    \itemsep -0.5em \vspace{-0.5em}
-    }{
-    \end{list}
-    \vspace{0.5em}
-}
-
-
 \renewcommand{\maketitle}{
     \begin{center}
         {\Huge\theauthor}
@@ -70,16 +36,41 @@
 
 \maketitle
 
-\vspace{1em}
+\vspace{2em}
 
 \begin{flushright}
-    \color{Gray}
+    {\color{Gray}
     \textbf{Andrew Huie}\\
-    \textit{
+    \textsl{
         3-11, 3 Ch$\bar{o}$me, Minato, \#1102\\
         Chuo-ku, Tokyo-to\\
-        Japan
-    }
+        Japan\\
+    }}
 \end{flushright}
+
+\vspace{1em}
+
+% TODO                    TODO
+\textbf{Addressee} \hfill Date\\
+\textsl{
+    Title
+    Company
+    1234 Main St.\\
+    City, State\\
+    Country\\
+}
+
+% TODO
+Salutation,
+
+% TODO
+Letter body
+
+% TODO
+Closing,\\
+
+\vspace{2em}
+
+\textbf{Andrew Huie}
 
 \end{document}
