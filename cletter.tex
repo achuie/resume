@@ -1,4 +1,4 @@
-\documentclass[10pt, a4paper]{article}
+\documentclass[12pt, a4paper]{article}
 
 \usepackage[left=0.75in,right=0.75in,top=0.5in,bottom=0.6in]{geometry}
 \usepackage{hyperref}
@@ -7,6 +7,9 @@
 \usepackage{titling}
 \usepackage{changepage}
 \usepackage[parfill]{parskip}
+\usepackage[en-US, showdow]{datetime2}
+
+\DTMlangsetup[en-US]{ord=raise}
 
 % No page numbers.
 \pagestyle{empty}
@@ -41,14 +44,14 @@
     \textsl{
         3-11, 3 Ch$\bar{o}$me, Minato, \#1102\\
         Chuo-ku, Tokyo-to\\
-        Japan\\
+        104-0043 Japan\\
     }}
 \end{flushright}
 
 \vspace{1em}
 
-% TODO                    TODO
-\textbf{Addressee} \hfill Date\\
+% TODO
+\textbf{Addressee} \hfill \today\\
 \textsl{
     % TODO
     Title\\
@@ -61,11 +64,15 @@
 % TODO
 Salutation,
 
+\vspace{0.75em}
+
 % TODO
 Letter body
 
+\vspace{0.75em}
+
 % TODO
-Closing,\\
+Closing,
 
 \vspace{2em}
 
