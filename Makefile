@@ -1,13 +1,10 @@
 all: resume cletter
 
 resume:
-	pdflatex -jobname andrew_huie resume.tex
+	tectonic resume.tex && mv resume.pdf andrew_huie.pdf
 
 cletter:
-	pdflatex cletter.tex
+	tectonic cletter.tex
 
 clean:
-	rm -f *.aux *.log *.out
-
-veryclean: clean
 	rm -f *.pdf
