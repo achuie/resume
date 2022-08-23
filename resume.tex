@@ -25,7 +25,7 @@
     \end{list}
 }
 
-\newenvironment{aSubsection}[4]{
+\newenvironment{expSubsection}[4]{
     {#1} \hfill {#2} \\
     \textit{#3} \hfill \textit{#4}
     \smallskip
@@ -36,7 +36,7 @@
     \vspace{0.5em}
 }
 
-\newenvironment{pSubsection}[2]{
+\newenvironment{projSubsection}[2]{
     {#1} \hfill {#2}
     \smallskip
     \begin{list}{$\cdot$}{\leftmargin=1em}
@@ -44,6 +44,13 @@
     }{
     \end{list}
     \vspace{0.5em}
+}
+
+\newenvironment{subList}{
+    \begin{list}{\raisebox{.4ex}{\tiny$\succ$}}{\leftmargin=2em}
+    \itemsep -0.5em \vspace{-0.5em}
+    }{
+    \end{list}
 }
 
 
@@ -83,29 +90,50 @@
 
 \begin{aSection}{Technical Proficiency}
     \begin{tabularx}{\textwidth}{@{}>{\bfseries}l X@{}}
-    Computer Languages \\ \quad Proficient & \textbf{C\hspace{-.05em}\raisebox{.4ex}{\tiny
-    +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny +}, Python}, Rust, Java\\
-        \quad Familiar & Bash, Javascript/HTML/CSS\\
-        Development Tools & Linux, Git, CMake, IntelliJ, Nix Package Manager, Visual Studio
+        Computer Languages \\
+        \quad Proficient & \textbf{Python}\\
+        \quad Familiar & Bash, Rust, C\hspace{-.05em}\raisebox{.4ex}{\tiny +}\nolinebreak\hspace{
+            -.10em}\raisebox{.4ex}{\tiny +}\\
+        Development Tools & Pytest, GNU/Linux (Arch Linux \& Debian), Git, Docker, Nix Package
+            Manager
     \end{tabularx}
 \end{aSection}
 
 \begin{aSection}{Experience}
-    \begin{aSubsection}
+    \begin{expSubsection}
+        {\textbf{Mujin, Inc.} --- Autonomous industrial robotics solutions}
+        {Jun 2021--Present}
+        {Software Engineer in Test Development Division}
+        {Koto, Tokyo, JP}
+    \item Worked to develop testing simulator for continuous integration (CI) pipeline
+        \begin{subList}
+            \item Every part of the system---including UI interactions, IO signal timing, 3D
+                cameras, collision checking, WCS/PLC, and more---was simulated and made
+                configurable/overrideable
+            \item Wrote and maintained per-project test suites of feature tests, corner cases, and injected fault scenarios
+        \end{subList}
+    \item Contributed to system monitoring bot written in Go, improving error response time
+    \item Worked on system diagnostics and inspection webapp in React, visualizing system behavior
+        and aiding debugging
+    \item Set up and calibrated physical 6-axis robot test cells and successful expo demos
+    \item Used and managed JHBuild build system for reproducible, versioned system builds
+    \item Light work managing above containerized web services with Kubernetes
+    \end{expSubsection}
+
+    \begin{expSubsection}
         {\textbf{Ascent Robotics, Inc.} --- Autonomous robotics technology development}
-        {Sep 2017 -- Jun 2021}
+        {Sep 2017--Jun 2021}
         {Senior Software Engineer}
         {Shibuya, Tokyo, JP}
     \item Contributed to autonomous vehicle simulation suite
-        \begin{list}{\raisebox{.4ex}{\tiny$\succ$}}{\leftmargin=2em}
-            \itemsep -0.5em \vspace{-0.5em}
-            \item Lanelet2/OpenDrive map generator for in-house road network format, designed to facilitate
-                searching for difficult scenarios
+        \begin{subList}
+            \item Lanelet2/OpenDrive map generator for in-house road network format, designed to
+                facilitate searching for difficult scenarios
             \item Emulation of perception stack output for agent training in sim environment
             \item Lightweight collision sim for MCTS playout/rollout during simulation step
             \item High fidelity driving sim using Unreal Engine 4 with output similar to car
                 platform
-        \end{list}
+        \end{subList}
     \item Conducted screening interviews for hiring candidates
     \item Created simulation environment for robot arm pick/place project, exposing handles for
         domain randomization of objects, background, object position, lighting, and perspective for
@@ -117,11 +145,11 @@
             of Synthetic Images \textit{ArXiv} \textbf{2018}\\
             \hspace*{1em} Fernando Camaro Nogues, \textbf{Andrew Huie}, Sakyasingha Dasgupta
         \end{adjustwidth}
-    \end{aSubsection}
+    \end{expSubsection}
 
-    \begin{aSubsection}
+    \begin{expSubsection}
         {\textbf{Dr. Robert Cartwright, Rice University} --- Object-oriented program development}
-        {May -- Sep 2016}
+        {May--Sep 2016}
         {Research Assistant}
         {Houston, TX, USA}
     \item Created a new release of
@@ -130,63 +158,62 @@
     \item Adapted the JaCoCo Java code coverage library for integrated use in DrJava
     \item Debugged JUnit integration, Find/Replace, other UI features
     \item Updated documentation with DocBook
-    \end{aSubsection}
+    \end{expSubsection}
 
-    \begin{aSubsection}
+    \begin{expSubsection}
         {\textbf{Dr. Dan Wallach, Rice University} --- Java TCP/IP penetration testing}
-        {May -- Aug 2015}
+        {May--Aug 2015}
         {Research Assistant}
         {Houston, TX, USA}
     \item Inspected the security of TCP connections in Java 8, regarding the HotSpot JVM heap
     \item Ran thousands of automated trials in VMWare to stress test garbage collector
     \item Analyzed the JVM heap with VisualVM
     \item Discovered and patched security flaws
-    \end{aSubsection}
+    \end{expSubsection}
 
-    \begin{aSubsection}
+    \begin{expSubsection}
         {\textbf{LumaDyne Aerospace \& Scientific, LLC} --- Purpose-built scientific
         instruments}
-        {Feb -- Aug 2014}
+        {Feb--Aug 2014}
         {Electrical Engineering Intern}
         {Houston, TX, USA}
     \item Designed and fabricated application-specific printed circuit boards
     \item Experience with hardware and software design tools: Multisim, Ultiboard, and LabVIEW
-        \begin{list}{\raisebox{.4ex}{\tiny$\succ$}}{\leftmargin=2em}
-            \itemsep -0.5em \vspace{-0.5em}
+        \begin{subList}
             \item 3-phase brushless motor driver (PWM generator)
             \item piezoelectric crystal controller (PID control system on FPGA
                 with modbus serioal I/O)
             \item analog logic board
-        \end{list}
+        \end{subList}
     \item Extensive soldering experience with through-hole- and surface-
         mount devices
-    \end{aSubsection}
+    \end{expSubsection}
 
-    \begin{aSubsection}
+    \begin{expSubsection}
         {\textbf{Salient Partners, L.P.} --- Financial assets management firm}
-        {May -- Aug 2013}
+        {May--Aug 2013}
         {IT Intern}
         {Houston, TX, USA}
     \item Diagnosed and resolved a range of software, hardware, and network issues
     \item Deployed and repaired Dell workstations
-    \end{aSubsection}
+    \end{expSubsection}
 \end{aSection}
 
 \begin{aSection}{Projects}
-    \begin{pSubsection}
+    \begin{projSubsection}
         {\textbf{scrambler}}
         {\href{https://www.github.com/achuie/scrambler}{\textcolor{blue}{\underline{github.com:achuie/scrambler}}}}
     \item[] Scramble generator for the Rubik's Cube. Random move
         generator as a baseline, with a more sophisticated IDA* solver in the
         works.
-    \end{pSubsection}
+    \end{projSubsection}
 
-    \begin{pSubsection}
+    \begin{projSubsection}
         {\textbf{Cutthroat}}
         {\href{https://www.github.com/achuie/cutthroat}{\textcolor{blue}{\underline{github.com:achuie/cutthroat}}}}
     \item[] Networked multiplayer, top-down, ASCII-art shooter video game written in Java in which
         players mine for ammo and weapon upgrades, and win by reaching a number of kills.
-    \end{pSubsection}
+    \end{projSubsection}
 \end{aSection}
 
 \end{document}
