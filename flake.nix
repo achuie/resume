@@ -10,28 +10,31 @@
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combine {
           inherit (pkgs.texlive)
-            scheme-basic latex-bin latexmk xcolor titlesec titling bold-extra
-            changepage parskip etoolbox;
+            scheme-small latex-bin latexmk xcolor titlesec titling bold-extra
+            changepage parskip etoolbox datetime2 tracklang xkeyval;
         };
+        mkTeXDrvForDoc = doc: prettyName: (pkgs.stdenvNoCC.mkDerivation {
+          name = prettyName;
+
+          src = self;
+          buildPhase = ''
+            export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils tex ]}";
+            mkdir -p .cache/texmf-var
+            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+              latexmk -interaction=nonstopmode -pdf -lualatex \
+              ${doc}.tex
+          '';
+          installPhase = ''
+            mkdir $out
+            cp ${doc}.pdf $out/${prettyName}.pdf
+          '';
+          fixupPhase = "true";
+        });
       in rec {
         packages = rec {
-          resume = pkgs.stdenvNoCC.mkDerivation {
-            name = "resume";
+          resume = mkTeXDrvForDoc "resume" "andrew_huie";
+          cover-letter = mkTeXDrvForDoc "cletter" "cover_letter";
 
-            src = self;
-            buildPhase = ''
-              export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils tex ]}";
-              mkdir -p .cache/texmf-var
-              env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-                latexmk -interaction=nonstopmode -pdf -lualatex \
-                resume.tex
-            '';
-            installPhase = ''
-              mkdir $out
-              cp resume.pdf $out/andrew_huie.pdf
-            '';
-            fixupPhase = ''true'';
-          };
           default = resume;
         };
 
