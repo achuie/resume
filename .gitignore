@@ -1,3 +1,7 @@
+# LaTeX
 *.aux
 *.log
 *.out
+
+# Nix
+result

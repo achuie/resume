@@ -9,7 +9,9 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive) scheme-minimal latex-bin latexmk;
+          inherit (pkgs.texlive)
+            scheme-basic latex-bin latexmk xcolor titlesec titling bold-extra
+            changepage parskip etoolbox;
         };
       in rec {
         packages = rec {
@@ -28,6 +30,7 @@
               mkdir $out
               cp resume.pdf $out/andrew_huie.pdf
             '';
+            fixupPhase = ''true'';
           };
           default = resume;
         };
