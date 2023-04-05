@@ -10,32 +10,52 @@
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combine {
           inherit (pkgs.texlive)
-            scheme-small latex-bin latexmk xcolor titlesec titling bold-extra
-            changepage parskip etoolbox datetime2 tracklang xkeyval;
+            scheme-small latex-bin latexmk bold-extra titlesec titling
+            changepage datetime2 tracklang;
         };
-        mkTeXDrvForDoc = doc: prettyName: (pkgs.stdenvNoCC.mkDerivation {
-          name = prettyName;
+        mkTeXDrvForDoc = doc: prettyName:
+          (pkgs.stdenvNoCC.mkDerivation {
+            name = prettyName;
 
-          src = self;
-          buildPhase = ''
-            export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils tex ]}";
-            mkdir -p .cache/texmf-var
-            env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-              latexmk -interaction=nonstopmode -pdf -lualatex \
-              ${doc}.tex
-          '';
-          installPhase = ''
-            mkdir $out
-            cp ${doc}.pdf $out/${prettyName}.pdf
-          '';
-          fixupPhase = "true";
-        });
+            src = ./.;
+            buildPhase = ''
+              export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils tex ]}";
+              mkdir -p .cache/texmf-var
+              env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+                latexmk -interaction=nonstopmode -pdf -lualatex \
+                ${doc}.tex
+            '';
+            installPhase = ''
+              mkdir $out
+              cp ${doc}.pdf $out/${prettyName}.pdf
+            '';
+            fixupPhase = "true";
+          });
+
+        coverLetterDateScript = pkgs.writeShellScriptBin "compileCoverLetterWithDate.sh" ''
+          export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils tex ]}";
+          mkdir -p .cache/texmf-var
+          env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var LC_ALL=C LANG=en_US \
+            SOURCE_DATE_EPOCH=$(date -d "$1" +%s) \
+            latexmk -interaction=nonstopmode -pdf -lualatex -gg \
+            cletter.tex
+
+          cp cletter.pdf cover_letter.pdf
+          latexmk -C cletter.tex
+        '';
       in rec {
         packages = rec {
           resume = mkTeXDrvForDoc "resume" "andrew_huie";
           cover-letter = mkTeXDrvForDoc "cletter" "cover_letter";
 
           default = resume;
+        };
+
+        apps = {
+          cover-letter = {
+            type = "app";
+            program = "${coverLetterDateScript}/bin/compileCoverLetterWithDate.sh";
+          };
         };
 
         formatter = pkgs.nixfmt;
