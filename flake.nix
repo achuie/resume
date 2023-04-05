@@ -17,7 +17,7 @@
           (pkgs.stdenvNoCC.mkDerivation {
             name = prettyName;
 
-            src = ./.;
+            src = self;
             buildPhase = ''
               export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils tex ]}";
               mkdir -p .cache/texmf-var
@@ -35,8 +35,8 @@
         coverLetterDateScript = pkgs.writeShellScriptBin "compileCoverLetterWithDate.sh" ''
           export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils tex ]}";
           mkdir -p .cache/texmf-var
-          env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var LC_ALL=C LANG=en_US \
-            SOURCE_DATE_EPOCH=$(date -d "$1" +%s) \
+          env SOURCE_DATE_EPOCH=$(date -d "$1" +%s) LC_ALL=C LANG=en_US \
+            TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
             latexmk -interaction=nonstopmode -pdf -lualatex -gg \
             cletter.tex
 
