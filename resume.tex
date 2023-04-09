@@ -13,6 +13,8 @@
 % No page numbers.
 \pagestyle{empty}
 
+% Top level section heading.
+% #1: section name
 \newenvironment{aSection}[1]{
     \medskip \textbf{\uppercase{#1}}
     \smallskip
@@ -25,6 +27,11 @@
     \end{list}
 }
 
+% Work experience subsection.
+% #1: company name
+% #2: date range
+% #3: job title
+% #4: location
 \newenvironment{expSubsection}[4]{
     {#1} \hfill {#2} \\
     \textit{#3} \hfill \textit{#4}
@@ -36,6 +43,9 @@
     \vspace{0.5em}
 }
 
+% Project subsection.
+% #1: project name
+% #2: repo link
 \newenvironment{projSubsection}[2]{
     {#1} \hfill {#2}
     \smallskip
@@ -46,6 +56,7 @@
     \vspace{0.5em}
 }
 
+% Nested list with styled bullets.
 \newenvironment{subList}{
     \begin{list}{\raisebox{.4ex}{\tiny$\succ$}}{\leftmargin=2em}
     \itemsep -0.5em \vspace{-0.5em}
@@ -71,7 +82,7 @@
     \begingroup
     \addtolength\leftmargini{1.5em}
     \begin{quote}
-        \textit{Software engineer with four years of experience developing complex systems and
+        \textit{Software engineer with five years of experience developing complex systems and
             applications. Strong problem solver accustomed to working in Python and the Linux
             commandline on containerized programs. Interested in developing reliable, maintainable,
             and intuitive software.}
@@ -92,19 +103,19 @@
         {Jun 2021--Present}
         {Software Engineer in Test Development Division}
         {Koto, Tokyo, JP}
-    \item Worked to develop testing simulator for continuous integration (CI) pipeline
+    \item Developed testing simulator for continuous integration (CI) pipeline
         \begin{subList}
-            \item Every part of the system---including UI interactions, IO signal timing, 3D
-                cameras, collision checking, WCS/PLC, and more---was simulated and made
-                configurable/overrideable
+            \item Every part of the system was simulated in Python \& OpenRAVE and made
+                configurable/overrideable---including UI interactions, IO signal timing, 3D cameras,
+                collision detection, WCS/PLC, and more
             \item Wrote and maintained per-project test suites of feature tests, corner cases, and injected fault scenarios
         \end{subList}
-    \item Contributed to system monitoring bot written in Go, improving error response time
+    \item Developed system monitoring bot written in Go, improving error response time
     \item Worked on system diagnostics and inspection webapp in React, visualizing system behavior
         and aiding debugging
     \item Set up and calibrated physical 6-axis robot test cells and successful expo demos
     \item Used and managed JHBuild build system for reproducible, versioned system builds
-    \item Light work managing above containerized web services with Kubernetes
+    \item Managed aforementioned containerized web services with Kubernetes
     \end{expSubsection}
 
     \begin{expSubsection}
@@ -112,13 +123,14 @@
         {Sep 2017--May 2021}
         {Senior Software Engineer}
         {Shibuya, Tokyo, JP}
-    \item Member of team developing autonomous vehicle simulation suite, for training/evaluating
-        decision-making algorithms
+    \item Developed autonomous vehicle simulation suite for training/evaluating decision-making
+        algorithms
         \begin{subList}
             \item Lanelet2/OpenDrive map generator for in-house road network format, designed to
-                facilitate searching for difficult scenarios
-            \item Emulation of perception stack output for agent training in sim environment
-            \item Lightweight collision sim for MCTS playout/rollout during simulation step
+                facilitate searching for difficult scenarios in Rust
+            \item Emulation of perception stack output for agent training in sim environment in
+                Python
+            \item Lightweight collision sim for MCTS playout/rollout step in Rust
             \item High fidelity driving sim using Unreal Engine 4 with output similar to car
                 platform
         \end{subList}
