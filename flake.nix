@@ -9,8 +9,7 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive)
-            scheme-small latex-bin latexmk bold-extra titlesec titling
+          inherit (pkgs.texlive) scheme-small latex-bin latexmk bold-extra titlesec titling
             changepage datetime2 tracklang;
         };
         mkTeXDrvForDoc = doc: prettyName:
@@ -43,11 +42,11 @@
           cp cletter.pdf cover_letter.pdf
           latexmk -C cletter.tex
         '';
-      in rec {
+      in
+      {
         packages = rec {
           resume = mkTeXDrvForDoc "resume" "andrew_huie";
           cover-letter = mkTeXDrvForDoc "cletter" "cover_letter";
-
           default = resume;
         };
 
@@ -58,6 +57,6 @@
           };
         };
 
-        formatter = pkgs.nixfmt;
+        formatter = pkgs.nixpkgs-fmt;
       });
 }
