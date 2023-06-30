@@ -40,9 +40,9 @@
         });
 
       apps = forAllSystems (pset:
-        let
-          coverLetterDateScript = pset.pkgs.writeShellScriptBin "compileCoverLetterWithDate.sh" ''
-            export PATH="${pset.pkgs.lib.makeBinPath [ pset.pkgs.coreutils pset.this.tex ]}";
+        with pset; let
+          coverLetterDateScript = pkgs.writeShellScriptBin "compileCoverLetterWithDate.sh" ''
+            export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils this.tex ]}";
             mkdir -p .cache/texmf-var
             env SOURCE_DATE_EPOCH=$(date -d "$1" +%s) LC_ALL=C LANG=en_US \
               TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
