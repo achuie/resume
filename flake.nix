@@ -5,18 +5,18 @@
 
   outputs = { self, nixpkgs }:
     let
-      forAllSystems = f: nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system: f
-        { pkgs = nixpkgs.legacyPackages.${system}; this = self.packages.${system}; });
+      forAllSystems = f: nixpkgs.lib.genAttrs [ "x86_64-linux" ] (system:
+        f { pkgs = nixpkgs.legacyPackages.${system}; this = self.packages.${system}; });
     in
     {
       packages = forAllSystems (pset:
-        let
+        with pset; let
           mkTeXDrvForDoc = doc: prettyName:
-            (pset.pkgs.stdenvNoCC.mkDerivation {
+            (pkgs.stdenvNoCC.mkDerivation {
               name = prettyName;
               src = self;
               buildPhase = ''
-                export PATH="${pset.pkgs.lib.makeBinPath [ pset.pkgs.coreutils pset.this.tex ]}";
+                export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils this.tex ]}";
                 mkdir -p .cache/texmf-var
                 env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
                   latexmk -interaction=nonstopmode -pdf -lualatex \
@@ -30,13 +30,13 @@
             });
         in
         {
-          tex = pset.pkgs.texlive.combine {
-            inherit (pset.pkgs.texlive) scheme-small latex-bin latexmk bold-extra titlesec titling
+          tex = pkgs.texlive.combine {
+            inherit (pkgs.texlive) scheme-small latex-bin latexmk bold-extra titlesec titling
               changepage datetime2 tracklang;
           };
           resume = mkTeXDrvForDoc "resume" "andrew_huie";
           cover-letter = mkTeXDrvForDoc "cletter" "cover_letter";
-          default = pset.this.resume;
+          default = this.resume;
         });
 
       apps = forAllSystems (pset:
