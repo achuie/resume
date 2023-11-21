@@ -105,10 +105,9 @@
         {Koto, Tokyo, JP}
     \item Developed testing simulator for continuous integration (CI) pipeline
         \begin{subList}
-            \item Every part of the system was simulated in Python \& OpenRAVE and made
-                configurable/overrideable---including UI interactions, IO signal timing, 3D cameras,
-                collision detection, warehouse control systems (WCS)/programmable logic controllers
-                (PLC), and more
+            \item Fully simulated Mujin Controller robot cells with Python \& OpenRAVE---including UI interactions, IO
+                signal timing, 3D cameras, collision detection, warehouse control systems (WCS)/programmable logic
+                controllers (PLC), and more
 
             \item Wrote and maintained per-project test suites of feature tests, corner cases, and injected fault scenarios
         \end{subList}
@@ -203,10 +202,9 @@
     \begin{tabularx}{\textwidth}{@{}>{\bfseries}l X@{}}
         Computer Languages \\
         \quad Proficient & \textbf{Python}\\
-        \quad Familiar & Bash, Rust, Go, JavaScript\\
+        \quad Familiar & Rust, Bash, Go, JavaScript\\
         % C\hspace{-.05em}\raisebox{.4ex}{\tiny +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny +}\\
-        Development Tools & Pytest, GNU/Linux (Arch Linux \& Debian), Git, Docker, Nix Package
-            Manager
+        Development Tools & Pytest, GNU/Linux (Arch Linux \& Debian), Git, Docker, Nix \& Nixpkgs
     \end{tabularx}
 \end{aSection}
 
@@ -227,9 +225,8 @@
     \begin{projSubsection}
         {\textbf{scrambler}}
         {\href{https://www.github.com/achuie/scrambler}{\textcolor{blue}{\underline{github.com:achuie/scrambler}}}}
-    \item[] Scramble generator for the Rubik's Cube. Random move
-        generator as a baseline, with a more sophisticated IDA* solver in the
-        works.
+    \item[] Scramble generator for the Rubik's Cube. Random move generator as a baseline, with a more sophisticated IDA*
+        solver in the works. Packaged with Nix \colorbox{lightgray}{\texttt{\$ nix run github:achuie/scrambler -- rand}}
     \end{projSubsection}
 
     \begin{projSubsection}
