@@ -37,8 +37,8 @@
 % #3: job title
 % #4: location
 \newenvironment{expSubsection}[4]{
-    {#1} \hfill {#2} \\
-    \textit{#3} \hfill \textit{#4}
+    \textbf{#3} \hfill {#2} \\
+    {#1} \hfill \textit{#4}
     \smallskip
     \begin{list}{$\cdot$}{\leftmargin=1em}
     \itemsep -0.5em \vspace{-0.5em}
@@ -87,7 +87,7 @@
     \addtolength\leftmargini{1.5em}
     \begin{quote}
         \textit{Software engineer with eight years of experience developing complex systems and applications. Strong
-            problem solver accustomed to working in Linux environments on containerized programs. Interested in developing
+            problem solver accustomed to working in Linux environments on containerized programs. Focused on developing
             reliable, maintainable, and intuitive software.}
     \end{quote}
     \endgroup
@@ -102,32 +102,34 @@
 
 \begin{aSection}{Experience}
     \begin{expSubsection}
-        {\textbf{Mujin, Inc.} --- Autonomous industrial robotics solutions}
+        {\textit{Mujin, Inc.} --- Autonomous industrial robotics solutions}
         {Jun 2021--Present}
         {Software Engineer II}
         {Koto, Tokyo, JP}
-    \item Developed testing simulator for continuous integration (CI) pipeline
+    \item Developed controller simulator and GitLab-based CI pipeline management system, the foundation for company-wide
+        test driven development
         \begin{subList}
-            \item Simulated QML UI interactions to confirm required workflows
-            \item Emulated customer warehouse control systems (WCS/PLC) with I/O in Python to ensure project-critical
-                integrations and features
-            \item Designed and implemented routines for custom gripper interactions and behaviors in project specs
+            \item Simulated QML UI interactions to automate validation for onsite operations
+            \item Emulated warehouse control systems (WCS/PLC) in Python for integration testing critical features
+            \item Designed and implemented state machines for testing complex gripper interactions and behaviors
             \item Wrote and maintained per-project test suites of feature tests, corner cases, and injected fault
                 scenarios to provide guarantees for project deliverables
         \end{subList}
-    \item Built and maintained developer tooling to enable building and supporting many account projects simultaneously
+    \item Built and maintained developer tooling to enable designing and supporting many account projects
+        simultaneously, quadrupling revenue opportunities
         \begin{subList}
-            \item Developed system monitoring bot written in Go to keep track of live deployments
+            \item Developed system monitoring bot written in Go to keep track of live deployments, reducing response
+                time from days to minutes
             \item Worked on system diagnostics and inspection webapp using ReactJS and Python, enabling quick and
-                detailed debugging
-            \item Orchestrated containerized web services with Kubernetes
+                pinpoint debugging
+            \item Orchestrated containerized web services with Kubernetes to scale with developer demand
             \item Managed JHBuild configurations for reproducible, versioned system builds and development environments
         \end{subList}
     \item Set up and calibrated physical 6-axis robot test cells and successful expo demos
     \end{expSubsection}
 
     \begin{expSubsection}
-        {\textbf{Ascent Robotics, Inc.} --- Autonomous robotics technology development}
+        {\textit{Ascent Robotics, Inc.} --- Autonomous robotics technology development}
         {Sep 2017--May 2021}
         {Senior Software Engineer}
         {Shibuya, Tokyo, JP}
@@ -154,7 +156,7 @@
     \end{expSubsection}
 
     \begin{expSubsection}
-        {\textbf{Dr. Robert Cartwright, Rice University} --- Object-oriented program development}
+        {\textit{Dr. Robert Cartwright, Rice University} --- Object-oriented program development}
         {May--Sep 2016}
         {Research Assistant}
         {Houston, TX, USA}
@@ -167,7 +169,7 @@
     \end{expSubsection}
 
     \begin{expSubsection}
-        {\textbf{Dr. Dan Wallach, Rice University} --- Java TCP/IP penetration testing}
+        {\textit{Dr. Dan Wallach, Rice University} --- Java TCP/IP penetration testing}
         {May--Aug 2015}
         {Research Assistant}
         {Houston, TX, USA}
@@ -178,7 +180,7 @@
     \end{expSubsection}
 
     \begin{expSubsection}
-        {\textbf{LumaDyne Aerospace \& Scientific, LLC} --- Purpose-built scientific
+        {\textit{LumaDyne Aerospace \& Scientific, LLC} --- Purpose-built scientific
         instruments}
         {Feb--Aug 2014}
         {Electrical Engineering Intern}
@@ -196,7 +198,7 @@
     \end{expSubsection}
 
     \begin{expSubsection}
-        {\textbf{Salient Partners, L.P.} --- Financial assets management firm}
+        {\textit{Salient Partners, L.P.} --- Financial assets management firm}
         {May--Aug 2013}
         {IT Intern}
         {Houston, TX, USA}
@@ -207,10 +209,10 @@
 
 \begin{aSection}{Technical Proficiency}
     \begin{tabularx}{\textwidth}{@{}>{\bfseries}l X@{}}
-        Computer Languages & Python, Rust, Bash, Go,
+        Computer Languages & Python, Rust, Go, Bash,
             C\hspace{-.05em}\raisebox{.4ex}{\tiny +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny +},
             Java, JavaScript\\
-        Development Tools & Pytest, GNU/Linux (Arch Linux \& Debian), Git, Docker, Nix \& Nixpkgs
+        Development Tools & Pytest, GNU/Linux (Arch Linux \& Debian), Git, GitLab, Docker, Nix \& Nixpkgs, Kubernetes
     \end{tabularx}
 \end{aSection}
 
