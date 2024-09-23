@@ -104,25 +104,30 @@
     \begin{expSubsection}
         {\textit{Mujin, Inc.} --- Autonomous industrial robotics solutions}
         {Jun 2021--Present}
-        {Software Engineer II}
+        {Software Engineer In Test Automation}
         {Koto, Tokyo, JP}
-    \item Developed controller simulator and GitLab-based CI pipeline management system, the foundation for company-wide
-        test driven development
+    \item Developed live controller monitoring bot in \textbf{Go}, reducing response time from \textbf{\textasciitilde 1
+        day} to \textbf{\textasciitilde 10 minutes}
         \begin{subList}
-            \item Simulated QML UI interactions to automate validation for onsite operations
-            \item Emulated warehouse control systems (WCS/PLC) in Python for integration testing critical features
-            \item Designed and implemented state machines for testing complex gripper interactions and behaviors
-            \item Wrote and maintained per-project test suites of feature tests, corner cases, and injected fault
-                scenarios to provide guarantees for project deliverables
+        \item Created system usage statistics module to enable hardware issue support
+        \item Designed and implemented module to stream controller state info from \textbf{GraphQL} over
+            \textbf{websockets}
+        \item Automated deployment with \textbf{GitLab} and \textbf{Kubernetes}
         \end{subList}
-    \item Built and maintained developer tooling to enable designing and supporting many account projects
-        simultaneously, quadrupling revenue opportunities
+    \item Engineered controller system simulator for company-wide \textbf{test driven development}
         \begin{subList}
-            \item Developed live controller monitoring bot in Go, reducing response time from days to minutes
-            \item Worked on system inspection webapp using ReactJS \& Python, accelerating pinpoint debugging
-            \item Orchestrated containerized web services with Kubernetes to scale with developer demand
-            \item Managed JHBuild configurations for reproducible, versioned system builds and development environments
+        \item Simulated \textbf{QML} UI interactions in Python to automate validation for onsite operations
+        \item Emulated warehouse control systems (WCS/PLC) in \textbf{Python} for integration testing critical features
+        \item Designed and programmed threaded control routines for testing complex hardware interactions
+        \item Created and implemented per-project test suites of feature, corner-case, and \textbf{fault-injection}
+            tests to provide guarantees for project deliverables
         \end{subList}
+    \item Devised and programmed Industrial Task Language (\textbf{ITL}) programs to control additional robotic hardware
+    \item Developed system inspection webapp using ReactJS \& Python for \textbf{forensic debugging}
+    \item Architected and implemented \textbf{Pytest} framework to validate override \& migration operations on
+        controller configurations
+    \item Evaluated and prototyped \textbf{Nix} for better reproducibility of builds and development, runtime, and test
+        environments compared to JHBuild
     \item Set up and calibrated physical 6-axis robot test cells and successful expo demos
     \end{expSubsection}
 
