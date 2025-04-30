@@ -32,7 +32,7 @@
         {
           tex = pkgs.texlive.combine {
             inherit (pkgs.texlive) scheme-small latex-bin latexmk bold-extra titlesec titling
-              changepage datetime2 tracklang;
+              changepage datetime2 datetime2-english tracklang;
           };
           resume = mkTeXDrvForDoc "resume" "andrew_huie";
           cover-letter = mkTeXDrvForDoc "cletter" "cover_letter";
