@@ -88,8 +88,8 @@
     \addtolength\leftmargini{1.5em}
     \begin{quote}
         \textit{Software engineer with eight years of experience developing complex systems and applications. Strong
-            problem solver accustomed to working in Linux environments on containerized programs. Focused on developing
-            reliable, maintainable, and intuitive software.}
+        problem solver specializing in Linux systems and containerized programs. Focused on building resilient,
+        maintainable, and intuitive systems.}
     \end{quote}
     \endgroup
 }
@@ -105,8 +105,8 @@
     \begin{tabularx}{\textwidth}{@{}>{\bfseries}l X@{}}
         Computer Languages & Python, Rust, Go, Bash,
             C\hspace{-.05em}\raisebox{.4ex}{\tiny +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny +},
-            Java, Nix, JavaScript\\
-        Development Tools & Pytest, GNU/Linux (Arch \& Debian), Git, GitLab, Docker, Kubernetes, Nixpkgs
+            Nix\\
+        Development Tools & Pytest, GNU/Linux (Arch \& Debian), Git, GitLab Pipelines, Docker, Kubernetes, Nixpkgs
     \end{tabularx}
 \end{aSection}
 
@@ -116,14 +116,13 @@
         {Jun 2021--Present}
         {Software Engineer}
         {Koto, Tokyo, JP}
-    \item Lead testing efforts for customer projects, including cross-team coordination \& scheduling, simulation of
-        specialized hardware, and test development
-    \item Dogfooded below tools for \textbf{forensic debugging} \& \textbf{root cause analysis} to patch hundreds of
-        bugs
-    \item Spearheaded, designed, and implemented \textbf{Pytest} framework to validate override- \& migration-
-        operations on controller configurations, reducing downtime and debugging in on-site, production deployments
-    \item Developed live controller monitoring bot in \textbf{Go}, reducing response time from days to minutes for
-        thousands of deployments
+    \item Led test strategy for customer projects, coordinating cross-team efforts, hardware simulation, and automated
+        validation
+    \item Built test tools for \textbf{forensic debugging} \& \textbf{root cause analysis}, patching hundreds of bugs
+    \item Architected \textbf{Pytest} framework to validate controller config migrations, cutting on-site downtime and
+        debugging
+    \item Developed live monitoring bot in \textbf{Go}, cutting response time from days to minutes across thousands of
+        deployments
         \begin{subList}
         \item Created system usage statistics module to enable automated hardware issue support
         \item Designed and implemented module to stream controller state info from \textbf{GraphQL} over websockets
@@ -131,18 +130,15 @@
         \end{subList}
     \item Engineered controller system simulator, enabling company-wide \textbf{test-driven development}
         \begin{subList}
-        \item Simulated \textbf{QML} UI interactions to automate validation for on-site operations
-        \item Emulated warehouse control systems (WCS/\textbf{PLC}) in \textbf{Python} for integration testing critical
-            features
-        \item Designed and programmed threaded control routines for testing complex hardware interactions
-        \item Created and implemented per-project test suites of feature, corner-case, and \textbf{fault-injection}
-            tests to provide guarantees for project deliverables
+        \item Automated \textbf{QML} UI interaction for validation of on-site operations
+        \item Emulated warehouse control systems (WCS/\textbf{PLC}) in \textbf{Python} for integration testing
+        \item Built threaded control routines simulating complex hardware \& robot sequences
+        \item Developed per-project suites of feature, edge case, and \textbf{fault-injection} tests for project
+            deliverables
         \end{subList}
-    \item Devised and programmed Industrial Task Language (\textbf{ITL}) control software for peripheral robotic
-        hardware
+    \item Devised and programmed Industrial Task Language (\textbf{ITL}) control software for robotic peripherals
     \item Developed system inspection web app using \textbf{ReactJS} \& Python
-    \item Evaluated and prototyped \textbf{Nix} for better reproducibility of builds and development, runtime, and test
-        environments compared to JHBuild
+    \item Prototyped \textbf{Nix}-based reproducible builds and development environments, improving DX vs. JHBuild
     \item Set up and calibrated physical 6-axis robot test cells and successful expo demos
     \end{expSubsection}
 
@@ -151,16 +147,14 @@
         {Sep 2017--May 2021}
         {Senior Software Engineer}
         {Shibuya, Tokyo, JP}
-    \item Developed autonomous vehicle simulation suite for training/evaluating decision-making
-        algorithms
+    \item Built autonomous vehicle simulation suite for decision algorithm training and evaluation
         \begin{subList}
-            \item \textbf{Lanelet2/OpenDrive} map generator for in-house road network format, designed to
-                facilitate searching for difficult scenarios in \textbf{Rust}
-            \item Emulation of perception stack output for agent training in sim environment in
+        \item Developed \textbf{Rust}-based \textbf{Lanelet2/OpenDrive} map generator to search for high-difficulty test
+            scenarios
+            \item Emulated perception stack output for agent training in sim environment in
                 \textbf{Python}
-            \item Lightweight collision sim for \textbf{MCTS} playout/rollout step in Rust
-            \item High fidelity driving sim using \textbf{Unreal Engine 4} with output similar to car
-                platform
+            \item Designed and implemented lightweight collision sim for \textbf{MCTS} playout/rollout step in Rust
+            \item Developed \textbf{Unreal Engine 4} driving simulation replicating car platform sensor output
         \end{subList}
     \item Conducted screening interviews for hiring candidates during growth phase of startup
     \item Created data generation pipeline for object recognition in
