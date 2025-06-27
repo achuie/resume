@@ -7,8 +7,11 @@ on:
       - 'one-page'
 
 jobs:
-  publish:
+  check:
     runs-on: ubuntu-latest
+    outputs:
+      needs_update: ${{ steps.decision.outputs.needs_update }}
+      hash: ${{ steps.hash.outputs.hash }}
 
     steps:
       - uses: actions/checkout@v4
@@ -16,25 +19,29 @@ jobs:
       - name: Compute Input Hash
         id: hash
         run: |
-          HASH=$(sha256sum flake.nix resume.tex cletter.tex | sha256sum | cut -d' ' -f1)
+          HASH=$(sha256sum flake.nix flake.lock resume.tex | sha256sum | cut -d' ' -f1)
           echo "hash=$HASH" >> $GITHUB_OUTPUT
 
       - name: Check Existing Artifact Hash
+        id: decision
         run: |
           BRANCH_SAFE=$(echo "${{ github.ref_name }}" | tr '/' '-')
           git clone --depth=1 --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} deploy
-          
+
           # No artifact means build proceeds
           cd deploy/$BRANCH_SAFE || exit 0
-          
-          if [ -f input.hash ]; then
-            EXISTING_HASH=$(cat input.hash)
-            if [ "$EXISTING_HASH" = "${{ steps.hash.outputs.hash }}" ]; then
-              echo "No input changes detected, skipping build."
-              # Neutral exit code, marks job as skipped
-              exit 78
-            fi
-          fi
+
+          CURRENT_HASH=$(cat input.hash 2>/dev/null || echo "")
+          NEEDS_UPDATE=$([ "$CURRENT_HASH" = "${{ steps.hash.outputs.hash }}" ] && echo false || echo true)
+          echo "needs_update=$NEEDS_UPDATE" >> $GITHUB_OUTPUT
+
+  publish:
+    needs: check
+    if: needs.check.outputs.needs_update == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
 
       - name: Install Nix
         run: |
@@ -54,6 +61,7 @@ jobs:
           git config --global user.email "buildbot@example.com"
           git config --global user.name "buildbot"
 
+          git clone --depth=1 --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} deploy
           cd deploy
           mkdir -p "$BRANCH_SAFE"
           rm -f "$BRANCH_SAFE/andrew_huie.pdf" "$BRANCH_SAFE/input.hash"
