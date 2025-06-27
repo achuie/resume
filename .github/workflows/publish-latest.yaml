@@ -1,0 +1,75 @@
+name: Publish Namespaced Artifact
+
+on:
+  push:
+    branches:
+      - 'master'
+      - 'one-page'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compute Input Hash
+        id: hash
+        run: |
+          HASH=$(sha256sum flake.nix resume.tex cletter.tex | sha256sum | cut -d' ' -f1)
+          echo "hash=$HASH" >> $GITHUB_OUTPUT
+
+      - name: Check Existing Artifact Hash
+        run: |
+          BRANCH_SAFE=$(echo "${{ github.ref_name }}" | tr '/' '-')
+          git clone --depth=1 --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} deploy
+          
+          # No artifact means build proceeds
+          cd deploy/$BRANCH_SAFE || exit 0
+          
+          if [ -f input.hash ]; then
+            EXISTING_HASH=$(cat input.hash)
+            if [ "$EXISTING_HASH" = "${{ steps.hash.outputs.hash }}" ]; then
+              echo "No input changes detected, skipping build."
+              # Neutral exit code, marks job as skipped
+              exit 78
+            fi
+          fi
+
+      - name: Install Nix
+        run: |
+          curl -L https://nixos.org/nix/install | sh
+          . /home/runner/.nix-profile/etc/profile.d/nix.sh
+
+      - name: Enable Flakes
+        run: |
+          . /home/runner/.nix-profile/etc/profile.d/nix.sh
+          mkdir -p ~/.config/nix
+          echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+
+      - name: Build Artifact
+        run: |
+          . /home/runner/.nix-profile/etc/profile.d/nix.sh
+          nix build .#defaultPackage.x86_64-linux
+          tar czf artifact.tar.gz -C result .
+
+      - name: Deploy Namespaced Artifact
+        run: |
+          BRANCH_SAFE=$(echo "${{ github.ref_name }}" | tr '/' '-')
+
+          git config --global user.email "ci@example.com"
+          git config --global user.name "CI"
+
+          git clone --depth=1 --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} deploy
+
+          cd deploy
+          mkdir -p "$BRANCH_SAFE"
+          rm -f "$BRANCH_SAFE/artifact.tar.gz" "$BRANCH_SAFE/input.hash"
+          
+          cp ../artifact.tar.gz "$BRANCH_SAFE/"
+          echo "${{ steps.hash.outputs.hash }}" > "$BRANCH_SAFE/input.hash"
+
+          git add "$BRANCH_SAFE/"
+          git commit -m "Update $BRANCH_SAFE artifact"
+          git push
+
