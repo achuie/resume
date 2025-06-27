@@ -41,32 +41,26 @@ jobs:
           curl -L https://nixos.org/nix/install | sh
           . /home/runner/.nix-profile/etc/profile.d/nix.sh
 
-      - name: Enable Flakes
-        run: |
-          . /home/runner/.nix-profile/etc/profile.d/nix.sh
-          mkdir -p ~/.config/nix
-          echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
-
       - name: Build Artifact
         run: |
           . /home/runner/.nix-profile/etc/profile.d/nix.sh
-          nix build .#defaultPackage.x86_64-linux
-          tar czf artifact.tar.gz -C result .
+          nix --experimental-features 'nix-command flakes' build .#packages.x86_64-linux.default
+          cp result/andrew_huie.pdf .
 
       - name: Deploy Namespaced Artifact
         run: |
           BRANCH_SAFE=$(echo "${{ github.ref_name }}" | tr '/' '-')
 
-          git config --global user.email "ci@example.com"
-          git config --global user.name "CI"
+          git config --global user.email "buildbot@example.com"
+          git config --global user.name "buildbot"
 
           git clone --depth=1 --branch=gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} deploy
 
           cd deploy
           mkdir -p "$BRANCH_SAFE"
-          rm -f "$BRANCH_SAFE/artifact.tar.gz" "$BRANCH_SAFE/input.hash"
+          rm -f "$BRANCH_SAFE/andrew_huie.pdf" "$BRANCH_SAFE/input.hash"
           
-          cp ../artifact.tar.gz "$BRANCH_SAFE/"
+          cp ../andrew_huie.pdf "$BRANCH_SAFE/"
           echo "${{ steps.hash.outputs.hash }}" > "$BRANCH_SAFE/input.hash"
 
           git add "$BRANCH_SAFE/"
