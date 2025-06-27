@@ -1,5 +1,5 @@
 # Resume
 
-Download [here](https://raw.githubusercontent.com/achuie/resume/master/andrew_huie.pdf)
+Download [here](https://achuie.github.io/resume/one-page/andrew_huie.pdf)
 
-Full version [here](https://raw.githubusercontent.com/achuie/resume/master/andrew_huie_full.pdf)
+Full version [here](https://achuie.github.io/resume/master/andrew_huie.pdf)
