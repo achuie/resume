@@ -32,7 +32,7 @@
         {
           tex = pkgs.texlive.combine {
             inherit (pkgs.texlive) scheme-small latex-bin latexmk bold-extra titlesec titling
-              changepage datetime2 datetime2-english tracklang;
+              changepage datetime2 datetime2-english tracklang xecjk zxjafbfont;
           };
           resume = mkTeXDrvForDoc "resume" "andrew_huie";
           cover-letter = mkTeXDrvForDoc "cletter" "cover_letter";
@@ -58,8 +58,16 @@
             type = "app";
             program = "${coverLetterDateScript}/bin/compileCoverLetterWithDate.sh";
           };
+          arbitrary = {
+            type = "app";
+            program = "${pkgs.writeShellScriptBin "compileArbitrary.sh" ''
+              export PATH="${pkgs.lib.makeBinPath [ pkgs.coreutils this.tex ]}";
+              mkdir -p .cache/texmf-var
+              env SOURCE_DATE_EPOCH=$(date -d "$1" +%s) LC_ALL=C LANG=en_US \
+                TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
+                latexmk -interaction=nonstopmode -pdf -xelatex -gg $@
+            ''}/bin/compileArbitrary.sh";
+          };
         });
-
-      formatter = forAllSystems (pset: pset.pkgs.nixpkgs-fmt);
     };
 }
