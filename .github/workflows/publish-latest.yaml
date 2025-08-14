@@ -37,7 +37,7 @@ jobs:
 
   publish:
     needs: check
-    if: needs.check.outputs.needs_update == true
+    if: needs.check.outputs.needs_update == 'true'
     runs-on: ubuntu-latest
 
     steps:
